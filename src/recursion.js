@@ -379,7 +379,7 @@ var fibonacci = function(n) {
   if (n === 1 || n === 2) {
     return [1]
   }
-  return [nthFibo(n-1)].concat(nthFibo(n))
+  return fibonacci(n-1).concat(nthFibo(n))
 };
 
 console.log(fibonacci(1));
