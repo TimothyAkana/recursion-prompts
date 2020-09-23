@@ -357,17 +357,37 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
 var fibonacci = function(n) {
+  var nthFibo = function(n) {
+    if (n < 0) {
+      return null;
+    }
+    if (n === 0) {
+      return 0;
+    }
+    if (n === 1) {
+      return 1;
+    }
+    return nthFibo(n-2) + nthFibo(n-1)
+  };
+
   if (n < 0) {
     return null;
   }
   if (n === 0) {
-    return 0
+    return [0]
   }
   if (n === 1 || n === 2) {
-    return 1
+    return [1]
   }
-  return [fibonacci(n-1)].concat(fibonacci(n-2) + fibonacci(n-1))
+  return [nthFibo(n-1)].concat(nthFibo(n))
 };
+
+console.log(fibonacci(1));
+console.log(fibonacci(2));
+console.log(fibonacci(3));
+console.log(fibonacci(5));
+console.log(fibonacci(8));
+
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
